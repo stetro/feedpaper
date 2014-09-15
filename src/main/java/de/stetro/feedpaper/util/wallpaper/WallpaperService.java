@@ -30,6 +30,7 @@ public class WallpaperService {
                         int desiredMinimumHeight = wallpaperManager.getDesiredMinimumHeight();
                         int desiredMinimumWidth = wallpaperManager.getDesiredMinimumWidth();
                         wallpaperManager.setBitmap(getReSizedBitmap(bitmap, desiredMinimumHeight, desiredMinimumWidth));
+                        Toast.makeText(context, "Wallpaper updated!", Toast.LENGTH_SHORT).show();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

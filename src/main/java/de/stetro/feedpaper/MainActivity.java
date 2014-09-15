@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import de.stetro.feedpaper.util.FeedLoaderAsyncTask;
 
@@ -30,8 +31,10 @@ public class MainActivity extends Activity {
         updateWallpaperButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String userAccount = readSharedPreference(FeedPaperPreference.TWITTER_ACCOUNT);
+                Toast.makeText(getApplicationContext(), "Updating Wallpaper from " + userAccount + " ...", Toast.LENGTH_SHORT).show();
                 FeedLoaderAsyncTask task = new FeedLoaderAsyncTask(getApplicationContext());
-                task.execute(readSharedPreference(FeedPaperPreference.TWITTER_ACCOUNT));
+                task.execute(userAccount);
             }
         });
 
@@ -41,7 +44,7 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
                 alert.setTitle("Twitter Account");
-                alert.setMessage("This account will be polled to get the newest Tweet for your wallpaper.");
+                alert.setMessage("This account will be polled to get the newest Tweet for your wallpaper. (e.g. Astro_Alex, HistoryInPics, Fascinatingpics ...)");
                 final EditText input = new EditText(MainActivity.this);
                 input.setText(readSharedPreference(FeedPaperPreference.TWITTER_ACCOUNT));
                 alert.setView(input);
