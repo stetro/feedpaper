@@ -4,5 +4,6 @@
     <string name="app_name">feedpaper</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="preference_file_key">de.stetro.feedpaper.PREFERENCE_FILE_KEY</string>
 
 </resources>
