@@ -2,18 +2,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity"
-    android:background="#e5e5e5">
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_launcher"
+        android:paddingRight="150dp"
+        android:paddingLeft="0dp"
+        android:layout_marginTop="140dp"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="149dp"
+        android:paddingLeft="150dp"
+        android:paddingRight="0dp"
+        android:text="feedpaper"
+        android:textSize="30dp"/>
 
     <Button
+        android:id="@+id/setWallpaperButton"
         android:layout_width="fill_parent"
         android:layout_height="60dp"
-        android:text="Set Wallpaper"
-        android:id="@+id/setWallpaperButton"/>
+        android:background="#2f3f73"
+        android:drawableLeft="@drawable/ic_refresh"
+        android:layout_marginTop="250dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:text="Update Now"
+        android:textColor="#FFFFFF" />
 
+    <Button
+        android:id="@+id/setTwitterSourceButton"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="#28546c"
+        android:drawableLeft="@drawable/ic_twitter"
+        android:layout_marginTop="312dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:text="Twitter Source"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/setIntervalButton"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="#267257"
+        android:drawableLeft="@drawable/ic_clock"
+        android:layout_marginTop="374dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:text="Refresh Interval"
+        android:textColor="#ffffff" />
 
 </RelativeLayout>
