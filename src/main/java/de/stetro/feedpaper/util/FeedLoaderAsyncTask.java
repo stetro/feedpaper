@@ -2,6 +2,7 @@ package de.stetro.feedpaper.util;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -26,6 +27,11 @@ public class FeedLoaderAsyncTask extends AsyncTask<String, Void, String> {
         ConfigurationBuilder cb = getConfigurationBuilder();
 
         Twitter twitter = new TwitterFactory(cb.build()).getInstance();
+        try {
+            twitter.getOAuth2Token();
+        } catch (TwitterException e) {
+            e.printStackTrace();
+        }
         Paging paging = new Paging(1, 10);
         try {
             List<twitter4j.Status> tweets = twitter.getUserTimeline(strings[0], paging);
@@ -35,7 +41,7 @@ public class FeedLoaderAsyncTask extends AsyncTask<String, Void, String> {
                     continue;
                 }
                 MediaEntity mediaEntity = mediaEntities[mediaEntities.length - 1];
-                url = mediaEntity.getMediaURL();
+                url = mediaEntity.getMediaURL().concat(":large");
                 break;
             }
         } catch (TwitterException e) {
