@@ -2,11 +2,9 @@ package de.stetro.feedpaper.util;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import java.util.List;
 
-import de.stetro.feedpaper.util.wallpaper.WallpaperService;
 import twitter4j.MediaEntity;
 import twitter4j.Paging;
 import twitter4j.Twitter;
