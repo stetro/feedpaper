@@ -1,4 +1,4 @@
-package de.stetro.feedpaper.util.wallpaper;
+package de.stetro.feedpaper.util;
 
 import android.app.WallpaperManager;
 import android.content.Context;
@@ -49,10 +49,7 @@ public class WallpaperService {
     public boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            return true;
-        }
-        return false;
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
     public Bitmap getReSizedBitmap(Bitmap bm, int newHeight, int newWidth) {

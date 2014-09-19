@@ -1,4 +1,4 @@
-package de.stetro.feedpaper.util.wallpaper;
+package de.stetro.feedpaper.util;
 
 import android.graphics.drawable.Drawable;
 

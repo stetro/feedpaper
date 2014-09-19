@@ -11,15 +11,10 @@ import de.stetro.feedpaper.FeedpaperPreferences;
 
 
 public class SetTwitterSourceOnClickListener implements View.OnClickListener {
-    private Context context;
-
-    public SetTwitterSourceOnClickListener(Context context) {
-        this.context = context;
-    }
 
     @Override
     public void onClick(View view) {
-
+        final Context context = view.getContext();
         AlertDialog.Builder alert = new AlertDialog.Builder(context);
         alert.setTitle("Twitter Account");
         alert.setMessage("This account will be polled to get the newest Tweet for your wallpaper. (e.g. Astro_Alex, astro_reid, Fascinatingpics ...)");
