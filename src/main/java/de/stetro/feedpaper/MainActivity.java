@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
@@ -18,11 +17,14 @@ import de.stetro.feedpaper.util.FeedLoaderAsyncTask;
 
 public class MainActivity extends Activity {
 
+    private Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+        context = getApplicationContext();
         setupLayoutCallbacks();
     }
 
@@ -31,7 +33,8 @@ public class MainActivity extends Activity {
         updateWallpaperButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userAccount = readSharedPreference(FeedPaperPreference.TWITTER_ACCOUNT);
+
+                String userAccount = FeedpaperPreferences.readSharedPreference(context, FeedpaperPreferences.Preference.TWITTER_ACCOUNT);
                 Toast.makeText(getApplicationContext(), "Updating Wallpaper from " + userAccount + " ...", Toast.LENGTH_SHORT).show();
                 FeedLoaderAsyncTask task = new FeedLoaderAsyncTask(getApplicationContext());
                 task.execute(userAccount);
@@ -46,13 +49,13 @@ public class MainActivity extends Activity {
                 alert.setTitle("Twitter Account");
                 alert.setMessage("This account will be polled to get the newest Tweet for your wallpaper. (e.g. Astro_Alex, HistoryInPics, Fascinatingpics ...)");
                 final EditText input = new EditText(MainActivity.this);
-                input.setText(readSharedPreference(FeedPaperPreference.TWITTER_ACCOUNT));
+                input.setText(FeedpaperPreferences.readSharedPreference(context, FeedpaperPreferences.Preference.TWITTER_ACCOUNT));
                 alert.setView(input);
                 alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         Editable value = input.getText();
                         if (value != null && value.length() > 0) {
-                            saveToSharedPreferences(value.toString(), FeedPaperPreference.TWITTER_ACCOUNT);
+                            FeedpaperPreferences.saveToSharedPreferences(context, value.toString(), FeedpaperPreferences.Preference.TWITTER_ACCOUNT);
                         }
                     }
                 });
@@ -61,18 +64,5 @@ public class MainActivity extends Activity {
         });
     }
 
-    private String readSharedPreference(FeedPaperPreference preference) {
-        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        return sharedPref.getString(preference.getLabel(), "Astro_Alex");
-    }
 
-
-    private void saveToSharedPreferences(String value, FeedPaperPreference preference) {
-        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(preference.getLabel(), value);
-        editor.commit();
-    }
 }
