@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.Button;
 
+import de.stetro.feedpaper.ui.SetRefreshIntervalOnClickListener;
 import de.stetro.feedpaper.ui.SetTwitterSourceOnClickListener;
 import de.stetro.feedpaper.ui.TriggerUpdateWallpaperOnClickListener;
 
@@ -30,6 +31,9 @@ public class MainActivity extends Activity {
 
         Button twitterSourceButton = (Button) this.findViewById(R.id.setTwitterSourceButton);
         twitterSourceButton.setOnClickListener(new SetTwitterSourceOnClickListener());
+
+        Button refreshIntervalButton = (Button) this.findViewById(R.id.setIntervalButton);
+        refreshIntervalButton.setOnClickListener(new SetRefreshIntervalOnClickListener());
     }
 
 
