@@ -1,19 +1,13 @@
 package de.stetro.feedpaper.ui;
 
-import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
 
-import java.util.Calendar;
-
 import de.stetro.feedpaper.FeedpaperPreferences;
-import de.stetro.feedpaper.FeedpaperService;
 
 
 public class SetRefreshIntervalOnClickListener implements View.OnClickListener {

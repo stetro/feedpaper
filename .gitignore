@@ -4,6 +4,7 @@
 local.properties
 README.md
 build/
+keystore/
 
 # Ignore Gradle GUI config
 gradle-app.setting
