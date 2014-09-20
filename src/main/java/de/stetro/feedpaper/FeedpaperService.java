@@ -8,9 +8,6 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.util.Log;
-import android.widget.Toast;
-
-import java.util.Calendar;
 
 import de.stetro.feedpaper.util.FeedLoaderAsyncTask;
 
@@ -25,12 +22,10 @@ public class FeedpaperService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Context context = getApplicationContext();
         String userAccount = FeedpaperPreferences.readSharedPreference(context, FeedpaperPreferences.Preference.TWITTER_ACCOUNT);
-        Toast.makeText(context, "Updating Wallpaper from " + userAccount + " ...", Toast.LENGTH_SHORT).show();
         FeedLoaderAsyncTask task = new FeedLoaderAsyncTask(context);
         task.execute(userAccount);
         Log.d("feedpaper", "Updating Wallpaper ...");
 
-        Calendar cal = Calendar.getInstance();
         Intent nextIntent = new Intent(context, FeedpaperService.class);
         PendingIntent pendingIntent = PendingIntent.getService(context, 0, nextIntent, 0);
         AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
